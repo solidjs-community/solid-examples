@@ -2,7 +2,8 @@
   margin-top: 2em;
 }
 
-.increment, .count {
+.increment,
+.count {
   font-family: inherit;
   font-size: inherit;
   padding: 1em 2em;

@@ -1,5 +1,5 @@
 {
-  "name": "7guis-counter",
+  "name": "7guis",
   "scripts": {
     "dev": "solid-start dev",
     "build": "solid-start build",

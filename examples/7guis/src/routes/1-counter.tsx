@@ -1,16 +1,15 @@
-import Counter from "~/components/Counter";
-import "./index.css";
+import Counter from '~/components/Counter';
 
-export default function Home() {
+export default function () {
   return (
     <main>
       <h1>7GUIs: Counter</h1>
       <Counter />
       <p>
-        Visit{" "}
+        Visit{' '}
         <a href="https://solidjs.com" target="_blank">
           solidjs.com
-        </a>{" "}
+        </a>{' '}
         to learn how to build Solid apps.
       </p>
     </main>

@@ -2,7 +2,13 @@ lockfileVersion: 5.4
 
 importers:
 
-  packages/7guis-counter:
+  .:
+    specifiers:
+      prettier: 2.7.1
+    devDependencies:
+      prettier: 2.7.1
+
+  examples/7guis:
     specifiers:
       '@testing-library/jest-dom': ^5.16.2
       '@types/testing-library__jest-dom': ^5.14.3
@@ -25,8 +31,8 @@ importers:
       solid-app-router: 0.3.3_solid-js@1.4.4
       solid-js: 1.4.4
       solid-meta: 0.27.5_solid-js@1.4.4
-      solid-start: 0.1.0-alpha.88_rpaejj3o7mjmacznfi25z4pnr4
-      solid-start-node: 0.1.0-alpha.82_dzrryigdt5lphqedcv4g5q7rfu
+      solid-start: 0.1.0-alpha.89_rpaejj3o7mjmacznfi25z4pnr4
+      solid-start-node: 0.1.0-alpha.82_g3gyojgf2cjyjmzymualdpuys4
       solid-testing-library: 0.3.0_solid-js@1.4.4
       typescript: 4.7.3
       undici: 4.16.0
@@ -2815,6 +2821,12 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
+  /prettier/2.7.1:
+    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
+
   /pretty-format/26.6.2:
     resolution: {integrity: sha512-7AeGuCYNGmycyQbCqd/3PWH4eOoX/OiCa0uphp57NVTeAGdJGaAliecxwBDHYQCIvrW7aDBZCYeNTP/WX69mkg==}
     engines: {node: '>= 10'}
@@ -3039,7 +3051,7 @@ packages:
       solid-js: 1.4.4
     dev: true
 
-  /solid-start-node/0.1.0-alpha.82_dzrryigdt5lphqedcv4g5q7rfu:
+  /solid-start-node/0.1.0-alpha.82_g3gyojgf2cjyjmzymualdpuys4:
     resolution: {integrity: sha512-v0S/y260wcFBNSZ9gShJvZjw6MWD8OfHHruPqDWgzquD0izCXtYfAoU6+YpkejF482Nt/ZfPWXB5LKR+3GdxrQ==}
     peerDependencies:
       solid-start: '*'
@@ -3053,18 +3065,18 @@ packages:
       polka: 1.0.0-next.22
       rollup: 2.75.6
       sirv: 1.0.19
-      solid-start: 0.1.0-alpha.88_rpaejj3o7mjmacznfi25z4pnr4
+      solid-start: 0.1.0-alpha.89_rpaejj3o7mjmacznfi25z4pnr4
       undici: 4.16.0
       vite: 2.9.12
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /solid-start/0.1.0-alpha.88_rpaejj3o7mjmacznfi25z4pnr4:
-    resolution: {integrity: sha512-sML6krhbYg0oW+UVnVA0XIJjiXifP7GWKMwAKMyx9Ut9mYPiLhGTq61NEzSMr34F2z3SUq2PK9XmvvSCqMt+AA==}
+  /solid-start/0.1.0-alpha.89_rpaejj3o7mjmacznfi25z4pnr4:
+    resolution: {integrity: sha512-ZTVLt9eUAAGLkwt6UKEp3pSYsoLKdR9uYJgSuiiRZryDUm2nOj32cG2vO52nL9FXx4vD5Kpdh5xl0vB5jL5I0Q==}
     hasBin: true
     peerDependencies:
-      solid-app-router: ^0.3.1
+      solid-app-router: ^0.4.1
       solid-js: ^1.4.0
       solid-meta: ^0.27.2
       vite: ^2.8.6
@@ -3097,7 +3109,7 @@ packages:
       vite-plugin-inspect: 0.3.15_vite@2.9.12
       vite-plugin-solid: 2.2.6
     optionalDependencies:
-      solid-start-node: 0.1.0-alpha.82_dzrryigdt5lphqedcv4g5q7rfu
+      solid-start-node: 0.1.0-alpha.82_g3gyojgf2cjyjmzymualdpuys4
     transitivePeerDependencies:
       - less
       - sass
