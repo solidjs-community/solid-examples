@@ -1,0 +1,11 @@
+{
+  "name": "solid-examples",
+  "private": true,
+  "devDependencies": {
+    "prettier": "2.7.1"
+  },
+  "scripts": {
+    "format:code": "prettier --write --no-editorconfig examples",
+    "validate:formatting": "prettier --check --no-editorconfig examples"
+  }
+}
