@@ -7,3 +7,4 @@ Features:
 - CSS modules
 - Solid components (non stateful)
 - Global styling and custom props in `src/index.css`
+- CSS Reset: https://piccalil.li/blog/a-modern-css-reset/
