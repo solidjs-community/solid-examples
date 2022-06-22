@@ -1,6 +1,6 @@
 # Lightbulb
 
-A demo using a Singal and Show coponent to conditionally render elements
+A demo using a Signal and Show component to conditionally render elements
 to the UI.
 
 Features:
