@@ -1,0 +1,14 @@
+.socialList {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.socialList > li {
+  margin-left: 0.5rem;
+}
+
+.socialList i {
+  font-size: 2rem;
+  color: white;
+}
