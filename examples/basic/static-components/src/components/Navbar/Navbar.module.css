@@ -1,0 +1,16 @@
+.nav {
+  background-color: var(--sLight-blue);
+  padding: 1.5rem 3rem;
+}
+
+.nav > div {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 2.25rem;
+  pointer-events: none;
+}
