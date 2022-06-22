@@ -9,3 +9,5 @@ Features:
 - Read / Update signal
 - handle click event
 - Show component
+
+![lightbulb-result-gif](lightbulb-result.gif)
