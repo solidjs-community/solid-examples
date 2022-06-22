@@ -6,4 +6,4 @@ Features:
 
 - CSS modules
 - Solid components (non stateful)
-- Global stying and custom props in `src/index.css`
+- Global styling and custom props in `src/index.css`
