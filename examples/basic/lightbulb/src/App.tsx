@@ -1,4 +1,4 @@
-import { Component, createSignal, Show } from 'solid-js';
+import { Component, createSignal } from 'solid-js';
 
 import styles from './App.module.css';
 import bulbOff from './assets/light-bulb-off.jpg';
@@ -11,9 +11,7 @@ const App: Component = () => {
     <>
       <h1 class={styles.header}>Click the light to turn it on / off</h1>
       <div class={styles.bulbContainer} onClick={() => setLightOn((lightOnValue) => !lightOnValue)}>
-        <Show when={lightOn()} fallback={<img src={bulbOff} />}>
-          <img src={bulbOn} />
-        </Show>
+        <img src={lightOn() ? bulbOn : bulbOff} />
       </div>
     </>
   );
