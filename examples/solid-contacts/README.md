@@ -1,10 +1,14 @@
 # Solid Contacts
 
-A contact management app built with SolidStart to showcase SSR and progressive enhancement. Built by [Paul Roque](https://github.com/pauloevpr).
+A contacts management sample app designed to showcase SSR and progressive enhancement patterns in `SolidStart`.
+
+https://user-images.githubusercontent.com/33222314/196914078-59156052-077d-40eb-9081-4a6619f0265c.mp4
+
+Built by [Paul Roque](https://github.com/pauloevpr).
 
 ## Features
 
-SolidStart features:
+SolidStart features in display:
 
 - File-based routing
 - Cookie-based authentication using `solid-start/session`
@@ -12,7 +16,7 @@ SolidStart features:
 - RPC-like API endpoints using `$server` functions
 - Isomorphic data fetching using `routeData`
 - Page layouts using Nested Routes
-- Client-side data caching with invalidation
+- Simplified client-side data caching and invalidation
 - Data mutation using `createRouteAction` 
 - Search/filtering using standard forms and `useSearchParams`
 - Delete multiple items in a list using form inputs and `createRouteAction`
@@ -20,6 +24,7 @@ SolidStart features:
 
 App features:
 
+- Mobile and Desktop support
 - Sign In (without password)
 - View contacts grouped and ordered alphabetically
 - View details for individual contacts 
@@ -33,13 +38,7 @@ App features:
 - Smooth page transitions
 - Dark mode
 
-## Tools
-
-- `prettier` for code formatting
-- `Tailwind CSS` for styling
-- `typescript` for type check
-
-> The app was designed with Progressive Enhancement in mind. All features are available even when JavaScript is not available.
+> The app was designed with Progressive Enhancement in mind. All functionalities work even when JavaScript is not available.
 
 ## Run in Development mode
 
