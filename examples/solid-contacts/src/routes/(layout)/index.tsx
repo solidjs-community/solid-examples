@@ -1,7 +1,7 @@
 import { useRouteData } from '@solidjs/router'
 import { Show } from 'solid-js'
 import { createCacheableRouteData } from '~/utils'
-import { useContactsStore } from '~/client/stores/contacts'
+import { useContactsCache } from '~/client/cache/contacts'
 import { contactsApi } from '~/server/api/contacts'
 import ContactList from '~/components/ContactList'
 import AppTitle from '~/components/AppTitle'
@@ -19,7 +19,7 @@ export default function Home() {
 
 export function routeData() {
     return createCacheableRouteData(contactsApi.getAllContacts, {
-        fromCache: () => useContactsStore()?.getAllContacts(),
-        toCache: (contacts) => useContactsStore()?.init(contacts),
+        fromCache: () => useContactsCache()?.getAllContacts(),
+        toCache: (contacts) => useContactsCache()?.init(contacts),
     })
 }

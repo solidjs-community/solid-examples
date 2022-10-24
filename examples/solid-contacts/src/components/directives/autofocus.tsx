@@ -8,6 +8,7 @@ declare module 'solid-js' {
     }
 }
 
+/** This is intentionally designed as function call to prevent vite from messing with directive imports */
 export function useAutoFocus() {
     return (el: HTMLElement) => {
         onMount(() => {

@@ -116,17 +116,19 @@ export function createUrl(
     return url.pathname + url.search
 }
 
-export function createCacheableRouteData<T, S = true>(
+export function createCacheableRouteData<T, S = unknown>(
     fetcher: () => T | Promise<T>,
     options: ResourceOptions<T> & {
         fromCache?: (source: S) => T | Promise<T>
         toCache?: (value: T) => void | Promise<void>
-        key?:
-            | S
-            | false
-            | null
-            | undefined
-            | (() => S | false | null | undefined)
+        key?: S extends Function
+            ? never
+            :
+                  | S
+                  | false
+                  | null
+                  | undefined
+                  | (() => S | false | null | undefined)
     } = {}
 ) {
     return createRouteData(

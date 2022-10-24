@@ -1,13 +1,13 @@
 ﻿import { isServer } from 'solid-js/web'
 import { IContact } from '~/server/database/entities/contact'
 
-const store = (isServer as boolean) ? undefined : createStore()
+const cache = (isServer as boolean) ? undefined : createContactsCache()
 
-export function useContactsStore() {
-    return store
+export function useContactsCache() {
+    return cache
 }
 
-function createStore() {
+function createContactsCache() {
     let cache = new Map<string, IContact>()
     let initialized = false
 

@@ -1,6 +1,6 @@
 ﻿import { RouteDataArgs, useRouteData } from 'solid-start'
 import { Show } from 'solid-js'
-import { useContactsStore } from '~/client/stores/contacts'
+import { useContactsCache } from '~/client/cache/contacts'
 import { ContactForm } from '~/components/ContactForm'
 import { createCacheableRouteData } from '~/utils'
 import { contactsApi } from '~/server/api/contacts'
@@ -21,7 +21,7 @@ export function routeData(route: RouteDataArgs) {
     const contactId = route.params.id
 
     return createCacheableRouteData(() => contactsApi.getContact(contactId), {
-        fromCache: () => useContactsStore()?.getContact(contactId),
-        toCache: (contact) => useContactsStore()?.saveContact(contact),
+        fromCache: () => useContactsCache()?.getContact(contactId),
+        toCache: (contact) => useContactsCache()?.saveContact(contact),
     })
 }

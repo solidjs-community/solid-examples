@@ -31,16 +31,19 @@ export default function Button(
         <Dynamic
             {...attributes}
             component={props.href ? A : 'button'}
-            class={`inline-block disabled:animate-pulse rounded-full px-4 py-2 text-lg ${color()} ${
-                props.class || ''
-            }`}
+            class={
+                'inline-block disabled:animate-pulse rounded-full px-4 py-2 text-lg'
+            }
             classList={{
                 'border-2 dark:border-gray-600 border-gray-200': props.outline,
                 'animate-pulse': props.loading,
                 'inline-flex items-center justify-center !px-4 !py-4':
                     props.icon,
+                [color()]: true,
+                [props.class || '']: true,
                 ...(props.classList || {}),
             }}
+            // @ts-ignore
             disabled={props.disabled || props.loading}
             aria-label={props.label}
         >

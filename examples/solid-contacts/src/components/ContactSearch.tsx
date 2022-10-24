@@ -5,7 +5,7 @@ import { createCacheableRouteData, debounce } from '~/utils'
 import { contactsApi } from '~/server/api/contacts'
 import { For, Show } from 'solid-js'
 import ContactListItem from '~/components/ContactListItem'
-import { useContactsStore } from '~/client/stores/contacts'
+import { useContactsCache } from '~/client/cache/contacts'
 import Button from '~/components/Button'
 import { isServer } from 'solid-js/web'
 import ChevronLeftIcon from '~/components/icons/ChevronLeftIcon'
@@ -16,12 +16,12 @@ export default function ContactSearch() {
     const navigate = useNavigate()
     const autofocus = useAutoFocus()
     const [params] = useSearchParams()
-    const search = () => (params.search || '') as string
+    const search = () => params.search || ''
 
     const searchResults = createCacheableRouteData(
         () => contactsApi.searchContacts(search()),
         {
-            key: () => search(),
+            key: search,
             initialValue: [],
             fromCache: (search) =>
                 search ? searchContactsFromCache(search) : [],
@@ -116,7 +116,7 @@ export default function ContactSearch() {
                 </For>
             </Show>
             <Show when={searchResults().length === 0 && search().length > 0}>
-                <span class="text-light block flex justify-center pt-16">
+                <span class="text-light flex justify-center pt-16">
                     No contacts found
                 </span>
             </Show>
@@ -126,12 +126,12 @@ export default function ContactSearch() {
 
 async function searchContactsFromCache(search?: string) {
     if (!search) return []
-    const store = useContactsStore()
+    const cache = useContactsCache()
 
-    if (!store.initialized()) {
+    if (!cache.initialized()) {
         const contacts = await contactsApi.getAllContacts()
-        store.init(contacts)
+        cache.init(contacts)
     }
 
-    return store.searchContacts(search)
+    return cache.searchContacts(search)
 }

@@ -10,7 +10,7 @@ import {
 import { IContact } from '~/server/database/entities/contact'
 import { contactsApi } from '~/server/api/contacts'
 import { createRouteAction, ServerContext, useLocation } from 'solid-start'
-import { useContactsStore } from '~/client/stores/contacts'
+import { useContactsCache } from '~/client/cache/contacts'
 import { Dynamic, isServer } from 'solid-js/web'
 import Button from '~/components/Button'
 import ChevronLeftIcon from '~/components/icons/ChevronLeftIcon'
@@ -33,7 +33,7 @@ export default function ContactDetails(
         contactsApi.deleteContact,
         {
             invalidate: () =>
-                useContactsStore()?.removeContact(props.contact.id),
+                useContactsCache()?.removeContact(props.contact.id),
         }
     )
 
@@ -41,7 +41,7 @@ export default function ContactDetails(
         contactsApi.favoriteContact,
         {
             invalidate: () =>
-                useContactsStore()?.saveContact({
+                useContactsCache()?.saveContact({
                     ...props.contact,
                     favorite: favoriteAction.input?.get('favorite') === 'true',
                 }),
@@ -117,7 +117,7 @@ export default function ContactDetails(
                     }
                 ></Avatar>
                 <h1
-                    class="inline-block font-medium text-3xl font-medium mb-4 text-center"
+                    class="inline-block text-3xl font-medium mb-4 text-center"
                     use:flip={`contact${props.contact.id}.name`}
                 >
                     {props.contact.name}

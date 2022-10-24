@@ -2,36 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer components {
     .bg-background {
-        @apply
-            bg-gray-50 text-gray-800
+        @apply bg-gray-50 text-gray-800
             dark:bg-gray-900 dark:text-white;
     }
 
     .bg-surface {
-        @apply
-            bg-white text-gray-800
-            dark:bg-gray-800 dark:text-white
+        @apply bg-white text-gray-800
+            dark:bg-gray-800 dark:text-white;
     }
 
     .bg-surface-high {
-        @apply
-        bg-white text-gray-800
-            dark:bg-gray-700 dark:text-white
+        @apply bg-white text-gray-800
+            dark:bg-gray-700 dark:text-white;
     }
 
     .bg-surface-higher {
-        @apply
-        bg-white text-gray-800
-        dark:bg-gray-600 dark:text-white
+        @apply bg-white text-gray-800
+        dark:bg-gray-600 dark:text-white;
     }
 
     .bg-primary {
-        @apply
-            bg-blue-600 text-white
+        @apply bg-blue-600 text-white
             dark:bg-blue-300 dark:text-gray-900;
     }
 
@@ -40,15 +33,14 @@
     }
 
     .text-error {
-        @apply text-red-500 dark:text-red-300
+        @apply text-red-500 dark:text-red-300;
     }
 
     .text-primary {
-        @apply text-blue-500 dark:text-blue-300
+        @apply text-blue-500 dark:text-blue-300;
     }
 
     svg {
         @apply h-6 w-6;
     }
-
 }

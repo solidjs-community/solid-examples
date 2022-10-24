@@ -1,8 +1,8 @@
 ﻿import { Input } from '~/components/Input'
 import { createRouteAction, FormError } from 'solid-start/data'
 import { authApi } from '~/server/api/auth'
-import { useUserStore } from '~/client/stores/user'
-import { useContactsStore } from '~/client/stores/contacts'
+import { useAuthCache } from '~/client/cache/auth'
+import { useContactsCache } from '~/client/cache/contacts'
 import { useSearchParams } from '@solidjs/router'
 import Button from '~/components/Button'
 import SolidLogo from '~/components/icons/SolidLogo'
@@ -51,8 +51,8 @@ export default function LoginForm() {
 function login() {
     return createRouteAction(authApi.login, {
         invalidate: () => {
-            useUserStore().reset()
-            useContactsStore().reset()
+            useAuthCache().reset()
+            useContactsCache().reset()
         },
     })
 }

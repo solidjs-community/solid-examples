@@ -1,10 +1,10 @@
 import { useRouteData, useSearchParams } from '@solidjs/router'
 import { Outlet } from 'solid-start'
-import { useUserStore } from '~/client/stores/user'
+import { useAuthCache } from '~/client/cache/auth'
 import { createCacheableRouteData } from '~/utils'
 import { authApi } from '~/server/api/auth'
 import { createRouteAction } from 'solid-start/data'
-import { useContactsStore } from '~/client/stores/contacts'
+import { useContactsCache } from '~/client/cache/contacts'
 import SearchIcon from '~/components/icons/SearchIcon'
 import Button from '~/components/Button'
 import UserPlusIcon from '~/components/icons/UserPlusIcon'
@@ -19,8 +19,8 @@ export default function Protected() {
 
     const [, { Form: LogoutForm }] = createRouteAction(authApi.logout, {
         invalidate: () => {
-            useUserStore().reset()
-            useContactsStore().reset()
+            useAuthCache().reset()
+            useContactsCache().reset()
         },
     })
 
@@ -87,7 +87,7 @@ export default function Protected() {
 
 export function routeData() {
     return createCacheableRouteData(authApi.getCurrentUser, {
-        fromCache: () => useUserStore()?.getCurrentUser(),
-        toCache: (user) => useUserStore()?.init(user),
+        fromCache: () => useAuthCache()?.getCurrentUser(),
+        toCache: (user) => useAuthCache()?.init(user),
     })
 }

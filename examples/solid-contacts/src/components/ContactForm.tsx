@@ -2,7 +2,7 @@
 import { Input } from '~/components/Input'
 import { IContact } from '~/server/database/entities/contact'
 import { createRouteAction, FormError } from 'solid-start/data'
-import { useContactsStore } from '~/client/stores/contacts'
+import { useContactsCache } from '~/client/cache/contacts'
 import { contactsApi } from '~/server/api/contacts'
 import { useNavigate } from '@solidjs/router'
 import { isServer } from 'solid-js/web'
@@ -127,7 +127,7 @@ function createContact() {
 function editContact(contactId: string) {
     return createRouteAction(contactsApi.editContact, {
         invalidate: () => {
-            useContactsStore()?.removeContact(contactId)
+            useContactsCache()?.removeContact(contactId)
         },
     })
 }

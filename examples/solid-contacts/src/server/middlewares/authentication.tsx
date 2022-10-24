@@ -9,10 +9,9 @@ declare global {
     }
 }
 
-export const  useAuthentication = ({ forward }: MiddlewareInput) => {
-  return async (event: FetchEvent) => {
-    event.env.currentUser = await session.getCurrentUser(event.request)
-    return forward(event)
-  }
+export const useAuthentication = ({ forward }: MiddlewareInput) => {
+    return async (event: FetchEvent) => {
+        event.env.currentUser = await session.getCurrentUser(event.request)
+        return forward(event)
+    }
 }
-

@@ -111,18 +111,18 @@ function nextFrame(fn: () => void) {
 }
 
 function playFlipAnimation(
-    element: HTMLElement | undefined,
+    element: HTMLElement,
     source: DOMRect,
     options?: FlipAnimationOptions
 ) {
-    const destination = element!.getBoundingClientRect()
+    const destination = element.getBoundingClientRect()
 
     const deltaX = source.left - destination.left
     const deltaY = source.top - destination.top
     const deltaW = source.width / destination.width
     const deltaH = source.height / destination.height
 
-    element!.animate(
+    element.animate(
         [
             {
                 transformOrigin: 'top left',

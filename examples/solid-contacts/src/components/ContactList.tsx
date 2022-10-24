@@ -4,7 +4,7 @@ import { arrayGroupBy, arrayOrderBy, createUrl } from '~/utils'
 import ContactListItem from '~/components/ContactListItem'
 import { contactsApi } from '~/server/api/contacts'
 import { useNavigate, useSearchParams } from '@solidjs/router'
-import { useContactsStore } from '~/client/stores/contacts'
+import { useContactsCache } from '~/client/cache/contacts'
 import SearchIcon from '~/components/icons/SearchIcon'
 import UserPlusIcon from '~/components/icons/UserPlusIcon'
 import CheckIcon from '~/components/icons/CheckIcon'
@@ -40,7 +40,7 @@ export default function ContactList(
                 setContacts((list) =>
                     list.filter((x) => !selectedContactIds.includes(x.id))
                 )
-                useContactsStore()?.removeContacts(selectedContactIds)
+                useContactsCache()?.removeContacts(selectedContactIds)
                 navigate(createUrl('/', { delete: false }), { replace: true })
             },
         }
