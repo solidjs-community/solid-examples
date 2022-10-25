@@ -1,0 +1,31 @@
+{
+  "name": "solid-start",
+  "scripts": {
+    "dev": "solid-start dev --host",
+    "build": "solid-start build",
+    "start": "solid-start start",
+    "prettier": "prettier src --write --ignore-path .gitignore",
+    "prettier-check": "prettier src --check --ignore-path .gitignore"
+  },
+  "type": "module",
+  "devDependencies": {
+    "autoprefixer": "^10.4.8",
+    "postcss": "^8.4.16",
+    "prettier": "2.7.1",
+    "tailwindcss": "^3.1.8",
+    "solid-start-node": "0.1.8",
+    "typescript": "^4.8.3",
+    "vite": "^3.1.0",
+    "@vitejs/plugin-basic-ssl": "^0.1.2"
+  },
+  "dependencies": {
+    "@solidjs/meta": "^0.28.0",
+    "@solidjs/router": "^0.5.0",
+    "solid-js": "^1.5.9",
+    "solid-start": "^0.1.8"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
+
