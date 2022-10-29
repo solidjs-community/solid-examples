@@ -42,9 +42,3 @@ i created a script that will copy prisma schema to the vercel output folder, if 
 ### You Are Done
 
 Create a github repo and push your code to it, then deploy it to vercel (:
-
-
-
-
-
-
