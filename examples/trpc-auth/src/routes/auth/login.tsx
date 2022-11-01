@@ -2,7 +2,6 @@ import { createSignal, ParentComponent, Show } from "solid-js";
 import { A, Title, useNavigate } from "solid-start";
 import { toast } from "solid-toast";
 import { Spinner } from "~/components";
-import { useAuth } from "~/storage";
 import { eToString } from "~/utils/helpers";
 import { loginScheme, TOAST_CONFIG, validateScheme } from "~/utils/scheme";
 import { trpc } from "~/utils/trpc";
@@ -12,9 +11,13 @@ interface ILoginProps {}
 const Login: ParentComponent<ILoginProps> = ({}) => {
   const [email, setEmail] = createSignal("");
   const [password, setPassword] = createSignal("");
+  const context = trpc.useContext();
   const navigate = useNavigate();
-  const login = trpc.user.login.useMutation();
-  const auth = useAuth();
+  const login = trpc.user.login.useMutation({
+    onSuccess: async () => {
+      await context.user.me.invalidate();
+    },
+  });
 
   const onHandleLogin = async () => {
     if (validateScheme(loginScheme, { email: email(), password: password() })) {
@@ -23,7 +26,6 @@ const Login: ParentComponent<ILoginProps> = ({}) => {
           email: email(),
           password: password(),
         });
-        await auth.refetch();
         toast.success("Logged in successfully", TOAST_CONFIG);
         navigate("/");
       } catch (e) {

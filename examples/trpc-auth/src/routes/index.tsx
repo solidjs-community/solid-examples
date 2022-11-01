@@ -8,7 +8,12 @@ import { TOAST_CONFIG } from "~/utils/scheme";
 import { trpc } from "~/utils/trpc";
 
 export default function Home() {
-  const logout = trpc.user.logout.useMutation();
+  const context = trpc.useContext();
+  const logout = trpc.user.logout.useMutation({
+    onSuccess: async () => {
+      await context.user.me.invalidate();
+    },
+  });
   const navigate = useNavigate();
   const auth = useAuth();
 
@@ -16,7 +21,6 @@ export default function Home() {
     if (!auth.data) return;
     try {
       await logout.mutateAsync();
-      await auth.refetch();
       toast.success("Logged out successfully", TOAST_CONFIG);
       navigate("/auth/login");
     } catch (e) {
