@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply bg-bg;
+}
