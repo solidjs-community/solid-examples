@@ -24,7 +24,7 @@ type IAuthCTX = CreateQueryResult<
 export const AuthContext = createContext<IAuthCTX>({} as IAuthCTX);
 
 export const AuthProvider: ParentComponent = (props) => {
-  const me = trpc.user.me.useQuery(undefined, {
+  const me = trpc.user.me.useQuery(() => undefined, {
     refetchOnWindowFocus: false,
   });
   return (

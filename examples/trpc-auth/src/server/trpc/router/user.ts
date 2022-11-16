@@ -1,4 +1,9 @@
-import { procedure, protectedProcedure, router } from "../utils";
+import {
+  authedProcedure,
+  procedure,
+  protectedProcedure,
+  router,
+} from "../utils";
 import bcrypt from "bcryptjs";
 import { loginScheme, registerScheme } from "~/utils/scheme";
 import { TRPCError } from "@trpc/server";
@@ -49,15 +54,9 @@ export default router({
   }),
   logout: protectedProcedure.mutation(async ({ ctx }) => {
     const session = await storage.getSession(ctx.req.headers.get("Cookie"));
-    if (!session) {
-      throw new TRPCError({
-        code: "UNAUTHORIZED",
-        message: "No session found",
-      });
-    }
     ctx.res.headers["Set-Cookie"] = await storage.destroySession(session);
   }),
-  me: protectedProcedure.query(({ ctx }) => {
+  me: authedProcedure.query(({ ctx }) => {
     return ctx.user ?? null;
   }),
 });

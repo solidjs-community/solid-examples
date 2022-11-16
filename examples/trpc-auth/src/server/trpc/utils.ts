@@ -1,4 +1,4 @@
-import { initTRPC } from "@trpc/server";
+import { initTRPC, TRPCError } from "@trpc/server";
 import { IContext } from "./context";
 import { storage } from "~/storage";
 import { User } from "@prisma/client";
@@ -28,4 +28,15 @@ const isAuthed = t.middleware(async ({ ctx, next }) => {
   return next({ ctx });
 });
 
-export const protectedProcedure = t.procedure.use(isAuthed);
+export const authedProcedure = t.procedure.use(isAuthed);
+export const protectedProcedure = t.procedure
+  .use(isAuthed)
+  .use(({ ctx, next }) => {
+    if (!ctx.user) {
+      throw new TRPCError({
+        code: "UNAUTHORIZED",
+        message: "You must be logged in to do this",
+      });
+    }
+    return next({ ctx: { ...ctx, user: ctx.user } });
+  });

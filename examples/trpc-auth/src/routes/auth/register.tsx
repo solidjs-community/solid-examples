@@ -1,9 +1,10 @@
-import { createSignal, ParentComponent } from "solid-js";
+import { createSignal, ParentComponent, Show  } from "solid-js";
 import { A, Title, useNavigate } from "solid-start";
 import { toast } from "solid-toast";
 import { eToString } from "~/utils/helpers";
 import { registerScheme, TOAST_CONFIG, validateScheme } from "~/utils/scheme";
 import { trpc } from "~/utils/trpc";
+import { Spinner } from "~/components";
 
 interface IRegisterProps {}
 
@@ -80,6 +81,9 @@ const Register: ParentComponent<IRegisterProps> = ({}) => {
         <A href="/auth/login" class="text-blue font-bold">
           Already have an account? Login
         </A>
+        <Show when={register.isLoading}>
+          <Spinner />
+        </Show>
       </div>
     </>
   );
